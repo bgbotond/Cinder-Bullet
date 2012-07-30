@@ -35,8 +35,6 @@
 * 
 */
 
-#pragma once
-
 // Includes
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/Light.h"
@@ -106,8 +104,8 @@ public:
 	
 private:
 
-	static const uint32_t		MAX_OBJECTS = 300;
-	static const uint32_t		MAX_OBJECTS_TERRAIN = 80;
+	static const uint32_t		MAX_OBJECTS;
+	static const uint32_t		MAX_OBJECTS_TERRAIN;
 
 	void						initTest();
 	int32_t						mTest;
@@ -144,6 +142,9 @@ using namespace bullet;
 using namespace ci;
 using namespace ci::app;
 using namespace std;
+
+const uint32_t BulletTestApp::MAX_OBJECTS = 300;
+const uint32_t BulletTestApp::MAX_OBJECTS_TERRAIN = 80;
 
 void BulletTestApp::bindTexture( uint32_t index )
 {
