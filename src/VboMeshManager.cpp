@@ -90,6 +90,8 @@ namespace bullet
 			mesh->bufferTexCoords2d( 0, texCoords );
 		}
 
+		mesh->unbindBuffers();
+
 		return mesh;
 
 	}
