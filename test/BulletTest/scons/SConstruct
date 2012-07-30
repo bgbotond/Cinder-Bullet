@@ -1,0 +1,12 @@
+env = Environment()
+
+env['APP_TARGET'] = 'BulletTestApp'
+env['APP_SOURCES'] = ['BulletTestApp.cpp']
+env['RESOURCES'] = ['heightfield.png', 'heightfield_sm.jpg', 'losphere.obj',
+					'tex_sphere.jpg', 'tex_square.png', 'tex_terrain.jpg',
+					'torus.obj']
+
+# Cinder-Bullet
+env = SConscript('../../../scons/SConscript', exports = 'env')
+
+SConscript('../../../../../scons/SConscript', exports = 'env')

@@ -1,0 +1,27 @@
+Import('env')
+
+_INCLUDES = ['../src', '../src/bullet']
+_INCLUDES = [Dir(s).abspath for s in _INCLUDES]
+
+_SOURCES = ['CollisionObject.cpp', 'DynamicsWorld.cpp', 'RigidBody.cpp',
+			'SoftBody.cpp', 'Utilities.cpp', 'VboMeshManager.cpp']
+_SOURCES = [File('../src/' + s).abspath for s in _SOURCES]
+
+_LIBS = ['libBulletCollision', 'libBulletDynamics', 'libBulletMultiThreaded',
+		'libBulletSoftBody', 'libBulletSoftBodySolvers_OpenCL_Apple',
+		'libLinearMath', 'libMiniCL']
+
+if env['PLATFORM'] == 'darwin':
+	if 'DEBUG' in env and env['DEBUG']:
+		_LIBS = [s + '_d' for s in _LIBS]
+	_LIBS = [Dir('../lib/macosx/').abspath + '/' + s + '.a' for s in _LIBS]
+else:
+	_LIBS = []
+
+_LIBS = [File(s) for s in _LIBS]
+
+env.Append(APP_SOURCES = _SOURCES)
+env.Append(CPPPATH = _INCLUDES)
+env.Append(LIBS = _LIBS)
+
+Return('env')
