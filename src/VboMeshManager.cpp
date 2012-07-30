@@ -17,7 +17,7 @@ namespace bullet
 		// Remove unused references
 		for ( VboMeshManager::VboMeshList::iterator meshIt = sVboMeshList.begin(); meshIt != sVboMeshList.end(); ) {
 			if ( meshIt->second.expired() ) {
-				meshIt = sVboMeshList.erase( meshIt );
+				sVboMeshList.erase( meshIt++ );
 			} else {
 				++meshIt;
 			}
@@ -621,7 +621,12 @@ namespace bullet
 	}
 	bool VboMeshManager::PrimitiveInfo::operator<( const VboMeshManager::PrimitiveInfo &rhs ) const
 	{
-		return *this != rhs;
+		if( mSegments < rhs.mSegments ) return true;
+		if( mSegments > rhs.mSegments ) return false;
+
+		if( mType < rhs.mType ) return true;
+
+		return false;
 	}
 
 }
