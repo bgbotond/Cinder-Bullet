@@ -56,6 +56,12 @@ namespace bullet {
 	// Destructor
 	DynamicsWorld::~DynamicsWorld()
 	{
+		if ( mWorld != 0 ) {
+			delete mWorld;
+		}
+		if ( mSolver != 0 ) {
+			delete mSolver;
+		}
 		if ( mBroadphase != 0 ) {
 			delete mBroadphase;
 		}
@@ -64,12 +70,6 @@ namespace bullet {
 		}
 		if ( mDispatcher != 0 ) {
 			delete mDispatcher;
-		}
-		if ( mWorld != 0 ) {
-			delete mWorld;
-		}
-		if ( mSolver != 0 ) {
-			delete mSolver;
 		}
 	}
 
