@@ -208,7 +208,7 @@ namespace bullet {
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// Runs update logic
-	void DynamicsWorld::update( float frameRate )
+	void DynamicsWorld::update( float timeStep, float frameRate )
 	{
 
 		// Check if object count has changed
@@ -240,7 +240,8 @@ namespace bullet {
 		mNumObjects = numObjects;
 
 		// Update dynamics world
-		mWorld->stepSimulation( 1.0f, 10, 1.0f / math<float>::max( 1.0f, frameRate ) );
+//		mWorld->stepSimulation( 1.0f, 10, 1.0f / math<float>::max( 1.0f, frameRate ) );
+		mWorld->stepSimulation( timeStep, 10, 1.0f / math<float>::max( 1.0f, frameRate ) );
 
 	}
 

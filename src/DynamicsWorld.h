@@ -89,7 +89,7 @@ namespace bullet {
 
 		void												setInfo( const btSoftBodyWorldInfo &info );
 
-		void												update( float frameRate = 60.0f );
+		void												update( float timeStep = 1.0f, float frameRate = 60.0f );
 
 	private:
 
